@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Skriv user stories med AI",
-    "desc": "Använd Atlassian Intelligence i Jira för att generera user stories och acceptance criteria från en kort projektbeskrivning. Jämför med att skriva dem manuellt.",
+    "desc": "Använd Atlassian Rovo i Jira för att generera user stories och acceptance criteria från en kort projektbeskrivning. Jämför med att skriva dem manuellt.",
     "role": "ops",
     "level": "beginner",
     "system": "atlassian",
