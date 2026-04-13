@@ -40,7 +40,6 @@
 
     .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
-    /* Header */
     .header { padding: 48px 0 32px; }
     .header-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
     .header-icon {
@@ -60,7 +59,6 @@
     }
     .header p { font-size: 16px; color: var(--text-secondary); max-width: 540px; line-height: 1.6; }
 
-    /* Filters */
     .filters { padding-bottom: 20px; display: flex; flex-direction: column; gap: 14px; }
     .filter-group label {
       display: block; font-size: 11px; font-weight: 600; color: var(--text-muted);
@@ -79,13 +77,11 @@
     }
     .filter-count { font-size: 14px; color: var(--text-muted); padding: 4px 0; }
 
-    /* Grid */
     .grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 14px; padding-bottom: 80px;
     }
 
-    /* Cards */
     .card {
       background: var(--bg-surface); border: 1px solid var(--border); border-radius: 14px;
       padding: 20px; cursor: pointer; transition: all 0.2s ease;
@@ -119,13 +115,46 @@
     .card-meta span { font-size: 13px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
     .card-meta .icon { color: var(--text-muted); }
 
-    .empty {
-      text-align: center; padding: 64px 0; grid-column: 1 / -1;
+    .card-resource {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 8px; margin-top: 4px;
+      background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2);
+      text-decoration: none; font-size: 13px; font-weight: 500;
+      color: var(--accent-blue-text); transition: all 0.15s ease;
+      align-self: flex-start;
     }
+    .card-resource:hover {
+      background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.4);
+    }
+    .card-resource .res-icon { font-size: 14px; flex-shrink: 0; }
+    .card-resource .res-arrow { opacity: 0.5; transition: transform 0.15s ease; }
+    .card-resource:hover .res-arrow { transform: translateX(2px); opacity: 1; }
+
+    .loading {
+      text-align: center; padding: 80px 0; grid-column: 1 / -1;
+      color: var(--text-muted); font-size: 15px;
+    }
+    .loading-spinner {
+      width: 28px; height: 28px; border: 3px solid var(--border);
+      border-top-color: var(--accent-blue); border-radius: 50%;
+      animation: spin 0.8s linear infinite; margin: 0 auto 16px;
+    }
+
+    .empty { text-align: center; padding: 64px 0; grid-column: 1 / -1; }
     .empty-icon { font-size: 40px; margin-bottom: 12px; }
     .empty p { font-size: 16px; color: var(--text-muted); }
 
+    .error-msg {
+      text-align: center; padding: 64px 0; grid-column: 1 / -1;
+      color: #f87171; font-size: 15px; line-height: 1.6;
+    }
+    .error-msg code {
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      background: rgba(248,113,113,0.1); padding: 2px 6px; border-radius: 4px;
+    }
+
     @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     @media (max-width: 600px) {
       .container { padding: 0 16px; }
@@ -162,33 +191,15 @@
     <div class="filter-count" id="filter-count"></div>
   </div>
 
-  <div class="grid" id="grid"></div>
+  <div class="grid" id="grid">
+    <div class="loading">
+      <div class="loading-spinner"></div>
+      Laddar labbar...
+    </div>
+  </div>
 </div>
 
 <script>
-const LABS = [
-  { id:1, title:"Skriv user stories med AI", desc:"Använd Atlassian Intelligence i Jira för att generera user stories och acceptance criteria från en kort projektbeskrivning. Jämför med att skriva dem manuellt.", role:"ops", level:"beginner", system:"atlassian", time:"45 min", goal:"Snabbare och mer konsekvent kravhantering" },
-  { id:2, title:"AI-sammanfattning av möten", desc:"Testa att spela in och sammanfatta ett internt möte med AI. Jämför sammanfattningen med dina egna anteckningar — vad fångade AI:n som du missade, och vice versa?", role:"ops", level:"beginner", system:"general", time:"60 min", goal:"Frigöra tid genom automatiserade mötesanteckningar" },
-  { id:3, title:"Refaktorera kod med Copilot", desc:"Välj en befintlig kodfil i ett projekt och be Copilot föreslå refaktoreringar. Utvärdera förslagen: vad var bra, vad var farligt, vad lärde du dig om hur du promptar?", role:"dev", level:"beginner", system:"copilot", time:"45 min", goal:"Förstå var AI-kodassistenter hjälper och var de vilseleder" },
-  { id:4, title:"Bygg en prompt-mall för säljmejl", desc:"Skapa en återanvändbar prompt-mall i Claude för att generera personaliserade säljmejl baserade på prospektinfo. Testa med 3 olika prospects och iterera på prompten.", role:"sales", level:"beginner", system:"claude", time:"45 min", goal:"Snabbare prospektering med personlig touch" },
-  { id:5, title:"Designvarianter med Figma AI", desc:"Ta en befintlig designkomponent och använd Figmas AI-funktioner för att generera varianter. Utforska vad som fungerar för layout-exploration vs. detaljdesign.", role:"ux", level:"beginner", system:"figma", time:"60 min", goal:"Bredare designutforskning på kortare tid" },
-  { id:6, title:"SEO-analys med AI", desc:"Mata in en av våra kunders landningssidor i Claude och be om en SEO-analys med konkreta förbättringsförslag. Jämför med vad du själv hade hittat.", role:"growth", level:"beginner", system:"claude", time:"45 min", goal:"Snabbare SEO-audits med AI som bollplank" },
-  { id:7, title:"Automatisera tidsrapportering", desc:"Utforska Agiledays AI-funktioner för att effektivisera tidsrapportering och resursplanering. Dokumentera vilka funktioner som finns och hur de kan spara tid.", role:"ops", level:"intermediate", system:"agileday", time:"60 min", goal:"Minska admin-tid i projektledning" },
-  { id:8, title:"Prompt engineering för kodgenerering", desc:"Testa systematiskt olika prompt-tekniker (few-shot, chain-of-thought, constraints) i Claude för att generera en komplett feature. Dokumentera vilka tekniker som ger bäst resultat.", role:"dev", level:"intermediate", system:"claude", time:"60 min", goal:"Bli bättre på att instruera AI för koduppgifter" },
-  { id:9, title:"Analysera RFP:er med AI", desc:"Ladda upp en RFP eller offertförfrågan i Claude och be om en strukturerad analys: nyckelfrågor, risker, win-themes, och förslag på approach. Jämför med din egen analys.", role:"sales", level:"intermediate", system:"claude", time:"60 min", goal:"Snabbare och djupare analys av affärsmöjligheter" },
-  { id:10, title:"Content-workflow med AI", desc:"Bygg ett komplett content-workflow: research → outline → draft → edit med AI som stöd i varje steg. Testa med en riktig blogpost eller social media-kampanj.", role:"growth", level:"intermediate", system:"claude", time:"60 min", goal:"End-to-end content-produktion med AI" },
-  { id:11, title:"AI-driven användarresearch", desc:"Använd Claude för att analysera befintlig användardata (intervjuer, enkätsvar, supportärenden). Skapa personas och journey maps baserat på AI-analysen.", role:"ux", level:"intermediate", system:"claude", time:"60 min", goal:"Snabbare insikter från kvalitativ data" },
-  { id:12, title:"Confluence-sidor med AI", desc:"Testa Atlassian Intelligence i Confluence för att generera dokumentation, mötesprotokoll och projektbeskrivningar. Utvärdera kvaliteten och hitta ditt optimala workflow.", role:"ops", level:"intermediate", system:"atlassian", time:"45 min", goal:"Bättre dokumentation med mindre effort" },
-  { id:13, title:"Kodrecensioner med AI", desc:"Använd Copilot och Claude parallellt för att granska en pull request. Jämför deras feedback med manuell review — vad hittar AI som människor missar, och tvärtom?", role:"dev", level:"intermediate", system:"copilot", time:"60 min", goal:"Mer grundliga kodrecensioner" },
-  { id:14, title:"A/B-test-hypoteser med AI", desc:"Ge Claude data om en sida eller kampanj och be om A/B-test-hypoteser med förväntad effekt och prioritering. Testa att iterera och förfina med uppföljningsfrågor.", role:"growth", level:"intermediate", system:"claude", time:"45 min", goal:"Mer datadrivna experiment snabbare" },
-  { id:15, title:"Bygg ett AI-drivet internt verktyg", desc:"Använd Claude Code eller Artifacts för att bygga ett enkelt internt verktyg — t.ex. en offertgenerator, en projektnamn-brainstormer, eller en onboarding-guide.", role:"dev", level:"advanced", system:"claude", time:"60 min", goal:"Förstå potentialen i AI som utvecklingspartner" },
-  { id:16, title:"Design system-review med AI", desc:"Mata in ert design system i Claude och be om en konsistensanalys. Hitta inkonsistenser i spacing, färger och typografi som är svåra att upptäcka manuellt.", role:"ux", level:"advanced", system:"claude", time:"60 min", goal:"Bättre design system-kvalitet" },
-  { id:17, title:"AI-stödd pitch-prep", desc:"Förbered en kundpitch med AI: research om kunden, generera talking points, förutse invändningar och skapa en pitch-struktur. Testa med en riktig kommande pitch.", role:"sales", level:"advanced", system:"claude", time:"60 min", goal:"Bättre förberedda och mer träffsäkra pitchar" },
-  { id:18, title:"Jira-automation med AI-regler", desc:"Utforska och konfigurera Jira Automation-regler som använder AI-funktioner — automatiska labels, prioritering, och routing av issues baserat på innehåll.", role:"ops", level:"advanced", system:"atlassian", time:"60 min", goal:"Smartare projektflöden med mindre manuellt arbete" },
-  { id:19, title:"Testa AI för tillgänglighetsanalys", desc:"Använd AI för att granska en webbsida mot WCAG-riktlinjer. Jämför AI:ns findings med en manuell audit och utvärdera var AI är pålitlig nog att lita på.", role:"dev", level:"advanced", system:"claude", time:"60 min", goal:"Snabbare a11y-screening i projekten" },
-  { id:20, title:"Kompetitiv analys med AI", desc:"Gör en djupanalys av en konkurrents digitala närvaro med AI som forskningsassistent: positionering, content-strategi, SEO-approach och UX-mönster.", role:"growth", level:"advanced", system:"claude", time:"60 min", goal:"Djupare konkurrentinsikter på en bråkdel av tiden" },
-];
-
 const FILTERS = {
   role: [
     { id:"all", label:"Alla" }, { id:"dev", label:"Utvecklare" }, { id:"ux", label:"UX/UI" },
@@ -211,7 +222,22 @@ const LABELS = {
   role: { dev:"Utvecklare", ux:"UX/UI", sales:"Sälj", growth:"Growth", ops:"Operations" },
 };
 
+const RESOURCE_ICONS = { video: "▶", article: "📄", guide: "📘" };
+
 const state = { role:"all", level:"all", system:"all", expanded:null };
+let labs = [];
+
+async function loadLabs() {
+  try {
+    const res = await fetch("labs.json");
+    if (!res.ok) throw new Error(res.status);
+    labs = await res.json();
+    render();
+  } catch (err) {
+    document.getElementById("grid").innerHTML =
+      '<div class="error-msg">Kunde inte ladda labbarna.<br>Kontrollera att <code>labs.json</code> finns i samma mapp som <code>index.html</code>.</div>';
+  }
+}
 
 function init() {
   Object.keys(FILTERS).forEach(key => {
@@ -220,8 +246,6 @@ function init() {
       const btn = document.createElement("button");
       btn.className = "filter-btn" + (opt.id === "all" ? " active" : "");
       btn.textContent = opt.label;
-      btn.dataset.filter = key;
-      btn.dataset.value = opt.id;
       btn.addEventListener("click", () => {
         state[key] = opt.id;
         state.expanded = null;
@@ -232,18 +256,18 @@ function init() {
       container.appendChild(btn);
     });
   });
-  render();
+  loadLabs();
 }
 
 function render() {
   const grid = document.getElementById("grid");
-  const filtered = LABS.filter(lab =>
+  const filtered = labs.filter(lab =>
     (state.role === "all" || lab.role === state.role) &&
     (state.level === "all" || lab.level === state.level) &&
     (state.system === "all" || lab.system === state.system)
   );
 
-  document.getElementById("filter-count").textContent = filtered.length + " av " + LABS.length + " labbar";
+  document.getElementById("filter-count").textContent = filtered.length + " av " + labs.length + " labbar";
 
   if (filtered.length === 0) {
     grid.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div><p>Inga labbar matchar dina filter. Prova att bredda sökningen.</p></div>';
@@ -251,22 +275,30 @@ function render() {
   }
 
   grid.innerHTML = filtered.map(lab => {
-    const isExpanded = state.expanded === lab.id;
+    const isExp = state.expanded === lab.id;
+    const r = lab.resource;
+    const ico = r ? (RESOURCE_ICONS[r.type] || "🔗") : "";
+
     return `
-      <div class="card${isExpanded ? " expanded" : ""}" data-id="${lab.id}">
+      <div class="card${isExp ? " expanded" : ""}" data-id="${lab.id}">
         <div class="badges">
           <span class="badge badge-${lab.level}">${LABELS.level[lab.level]}</span>
           <span class="badge badge-system">${LABELS.system[lab.system]}</span>
           <span class="badge badge-role">${LABELS.role[lab.role]}</span>
         </div>
         <h3>${lab.title}</h3>
-        ${isExpanded ? `
+        ${isExp ? `
           <div class="card-details">
             <p class="card-desc">${lab.desc}</p>
             <div class="card-meta">
               <span><span class="icon">⏱</span> ${lab.time}</span>
               <span><span class="icon">🎯</span> ${lab.goal}</span>
             </div>
+            ${r ? `<a class="card-resource" href="${r.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              <span class="res-icon">${ico}</span>
+              ${r.label}
+              <span class="res-arrow">→</span>
+            </a>` : ""}
           </div>
         ` : '<span class="card-hint">Klicka för detaljer →</span>'}
       </div>
