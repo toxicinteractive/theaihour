@@ -3,228 +3,360 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The AI Hour — toxic.se</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <title>The AI Hour — Toxic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg-deep: #0f172a;
-      --bg-surface: rgba(30,41,59,0.5);
-      --bg-surface-active: rgba(30,41,59,0.9);
-      --border: #334155;
-      --border-active: #3b82f6;
-      --text-primary: #f1f5f9;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
-      --text-faint: #475569;
-      --accent-blue: #3b82f6;
-      --accent-blue-soft: rgba(59,130,246,0.15);
-      --accent-blue-text: #93c5fd;
-      --accent-purple: #8b5cf6;
-      --accent-purple-soft: rgba(139,92,246,0.1);
-      --accent-purple-text: #a78bfa;
-      --accent-purple-border: rgba(139,92,246,0.25);
-      --green-bg: #ECFDF5; --green-text: #059669; --green-border: #A7F3D0;
-      --blue-bg: #EFF6FF; --blue-text: #2563EB; --blue-border: #BFDBFE;
-      --amber-bg: #FEF3C7; --amber-text: #D97706; --amber-border: #FDE68A;
+      --bg:        #0c0e12;
+      --surface:   #13161c;
+      --surface2:  #1a1e27;
+      --border:    #272c38;
+      --border-hi: #3d4455;
+      --text:      #e8eaf0;
+      --muted:     #7a8099;
+      --faint:     #454c62;
+
+      --yellow:    #f5c800;
+      --yellow-bg: rgba(245,200,0,0.08);
+      --green:     #3dffa0;
+      --green-bg:  rgba(61,255,160,0.07);
+      --blue:      #5b8ef0;
+      --blue-bg:   rgba(91,142,240,0.08);
+      --pink:      #f06aaf;
+      --pink-bg:   rgba(240,106,175,0.08);
+      --orange:    #f08050;
+      --orange-bg: rgba(240,128,80,0.08);
+      --purple:    #a78bfa;
+      --purple-bg: rgba(167,139,250,0.08);
+
+      --radius: 8px;
+      --font: 'Space Grotesk', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
     }
 
     body {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      background: linear-gradient(135deg, var(--bg-deep) 0%, #1e293b 100%);
-      color: var(--text-secondary);
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
     }
 
-    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    /* ── Header ───────────────────────────────── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      position: sticky;
+      top: 0;
+      background: rgba(12,14,18,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
 
-    .header { padding: 48px 0 32px; }
-    .header-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-    .header-icon {
-      width: 38px; height: 38px; border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-      display: flex; align-items: center; justify-content: center; font-size: 18px;
+    .logo {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .header-label {
-      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
-      color: var(--accent-purple); letter-spacing: 2px; text-transform: uppercase;
-    }
-    .header h1 {
-      font-size: clamp(32px, 5vw, 44px); font-weight: 700; line-height: 1.1;
-      background: linear-gradient(135deg, #e2e8f0, #94a3b8);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-    }
-    .header p { font-size: 16px; color: var(--text-secondary); max-width: 540px; line-height: 1.6; }
 
-    .filters { padding-bottom: 20px; display: flex; flex-direction: column; gap: 14px; }
-    .filter-group label {
-      display: block; font-size: 11px; font-weight: 600; color: var(--text-muted);
-      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+    .logo-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--yellow);
     }
-    .filter-options { display: flex; gap: 5px; flex-wrap: wrap; }
+
+    .header-meta {
+      margin-left: auto;
+      font-size: 13px;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    #filter-count {
+      color: var(--yellow);
+    }
+
+    /* ── Filter bar ───────────────────────────── */
+    .filter-bar {
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .filter-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+      width: 64px;
+      flex-shrink: 0;
+    }
+
     .filter-btn {
-      padding: 6px 14px; font-size: 13px; font-weight: 500; font-family: 'DM Sans', sans-serif;
-      border: 1px solid var(--border); border-radius: 20px;
-      background: var(--bg-surface); color: var(--text-secondary);
-      cursor: pointer; transition: all 0.15s ease; white-space: nowrap;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
     }
-    .filter-btn:hover { border-color: var(--text-muted); color: var(--text-primary); }
+
+    .filter-btn:hover {
+      border-color: var(--border-hi);
+      color: var(--text);
+    }
+
     .filter-btn.active {
-      border-color: var(--accent-blue); background: var(--accent-blue-soft); color: var(--accent-blue-text);
-    }
-    .filter-count { font-size: 14px; color: var(--text-muted); padding: 4px 0; }
-
-    .grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 14px; padding-bottom: 80px;
+      background: var(--yellow);
+      border-color: var(--yellow);
+      color: #0c0e12;
+      font-weight: 700;
     }
 
+    /* ── Grid ─────────────────────────────────── */
+    main {
+      padding: 32px 40px 64px;
+    }
+
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    /* ── Cards ────────────────────────────────── */
     .card {
-      background: var(--bg-surface); border: 1px solid var(--border); border-radius: 14px;
-      padding: 20px; cursor: pointer; transition: all 0.2s ease;
-      display: flex; flex-direction: column; gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
     }
-    .card:hover { border-color: var(--text-muted); }
-    .card.expanded { background: var(--bg-surface-active); border-color: var(--border-active); }
 
-    .badges { display: flex; gap: 6px; flex-wrap: wrap; }
+    .card:hover {
+      border-color: var(--border-hi);
+      background: var(--surface2);
+    }
+
+    .card.expanded {
+      border-color: var(--yellow);
+      background: var(--surface2);
+      grid-column: span 1;
+    }
+
+    .card-badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
     .badge {
-      font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 12px;
-      border: 1px solid; white-space: nowrap;
-    }
-    .badge-beginner { background: var(--green-bg); color: var(--green-text); border-color: var(--green-border); }
-    .badge-intermediate { background: var(--blue-bg); color: var(--blue-text); border-color: var(--blue-border); }
-    .badge-advanced { background: var(--amber-bg); color: var(--amber-text); border-color: var(--amber-border); }
-    .badge-system {
-      background: var(--accent-purple-soft); color: var(--accent-purple-text);
-      border-color: var(--accent-purple-border); font-weight: 500;
-    }
-    .badge-role {
-      background: rgba(100,116,139,0.15); color: var(--text-secondary);
-      border-color: rgba(100,116,139,0.25); font-weight: 500;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
 
-    .card h3 { font-size: 16px; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
-    .card-hint { font-size: 12px; color: var(--text-faint); }
-    .card-details { display: flex; flex-direction: column; gap: 12px; animation: fadeIn 0.25s ease; }
-    .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
-    .card-meta { display: flex; gap: 20px; flex-wrap: wrap; }
-    .card-meta span { font-size: 13px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
-    .card-meta .icon { color: var(--text-muted); }
+    .badge-beginner    { background: var(--green-bg);  color: var(--green);  }
+    .badge-intermediate{ background: var(--blue-bg);   color: var(--blue);   }
+    .badge-advanced    { background: var(--pink-bg);   color: var(--pink);   }
+
+    .badge-sys-claude    { background: var(--orange-bg); color: var(--orange); }
+    .badge-sys-copilot   { background: var(--blue-bg);   color: var(--blue);   }
+    .badge-sys-atlassian { background: var(--blue-bg);   color: #4ec9d4;       }
+    .badge-sys-figma     { background: var(--purple-bg); color: var(--purple); }
+    .badge-sys-hubspot   { background: var(--orange-bg); color: #f07848;       }
+    .badge-sys-slack     { background: var(--pink-bg);   color: #e08060;       }
+    .badge-sys-agileday  { background: var(--green-bg);  color: var(--green);  }
+    .badge-sys-general   { background: rgba(100,100,100,0.15); color: var(--muted); }
+
+    .card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .card-hint {
+      font-size: 12px;
+      color: var(--faint);
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .card-meta span {
+      font-size: 12px;
+      color: var(--faint);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .card-meta .icon {
+      font-size: 13px;
+    }
+
+    .card-goal {
+      font-size: 13px;
+      color: var(--yellow);
+      font-weight: 500;
+      padding: 8px 12px;
+      background: var(--yellow-bg);
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
 
     .card-resource {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 14px; border-radius: 8px; margin-top: 4px;
-      background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2);
-      text-decoration: none; font-size: 13px; font-weight: 500;
-      color: var(--accent-blue-text); transition: all 0.15s ease;
-      align-self: flex-start;
-    }
-    .card-resource:hover {
-      background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.4);
-    }
-    .card-resource .res-icon { font-size: 14px; flex-shrink: 0; }
-    .card-resource .res-arrow { opacity: 0.5; transition: transform 0.15s ease; }
-    .card-resource:hover .res-arrow { transform: translateX(2px); opacity: 1; }
-
-    .loading {
-      text-align: center; padding: 80px 0; grid-column: 1 / -1;
-      color: var(--text-muted); font-size: 15px;
-    }
-    .loading-spinner {
-      width: 28px; height: 28px; border: 3px solid var(--border);
-      border-top-color: var(--accent-blue); border-radius: 50%;
-      animation: spin 0.8s linear infinite; margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--blue);
+      text-decoration: none;
+      padding: 8px 12px;
+      background: var(--blue-bg);
+      border-radius: 6px;
+      transition: opacity 0.15s;
+      font-weight: 500;
     }
 
-    .empty { text-align: center; padding: 64px 0; grid-column: 1 / -1; }
-    .empty-icon { font-size: 40px; margin-bottom: 12px; }
-    .empty p { font-size: 16px; color: var(--text-muted); }
+    .card-resource:hover { opacity: 0.8; }
+
+    .res-arrow { margin-left: auto; }
+
+    /* ── Empty / Error states ─────────────────── */
+    .empty, .error-msg {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--muted);
+    }
+
+    .empty-icon { font-size: 40px; margin-bottom: 16px; }
 
     .error-msg {
-      text-align: center; padding: 64px 0; grid-column: 1 / -1;
-      color: #f87171; font-size: 15px; line-height: 1.6;
-    }
-    .error-msg code {
-      font-family: 'JetBrains Mono', monospace; font-size: 13px;
-      background: rgba(248,113,113,0.1); padding: 2px 6px; border-radius: 4px;
+      color: #f06a6a;
+      background: rgba(240,106,106,0.08);
+      border: 1px solid rgba(240,106,106,0.2);
+      border-radius: var(--radius);
+      font-size: 14px;
     }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    @media (max-width: 600px) {
-      .container { padding: 0 16px; }
-      .header { padding: 32px 0 24px; }
-      .grid { grid-template-columns: 1fr; }
+    /* ── Responsive ───────────────────────────── */
+    @media (max-width: 640px) {
+      header, .filter-bar, main { padding-left: 20px; padding-right: 20px; }
+      #grid { grid-template-columns: 1fr; }
+      .filter-label { display: none; }
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="header">
-    <div class="header-brand">
-      <div class="header-icon">⚡</div>
-      <span class="header-label">toxic.se</span>
-    </div>
-    <h1>The AI Hour</h1>
-    <p>20 lab-uppgifter för att accelerera din AI-mognad. Välj en som passar din roll, din nivå och ditt verktyg.</p>
+<header>
+  <div class="logo">
+    <div class="logo-dot"></div>
+    The AI Hour
   </div>
-
-  <div class="filters">
-    <div class="filter-group">
-      <label>Roll</label>
-      <div class="filter-options" id="filter-role"></div>
-    </div>
-    <div class="filter-group">
-      <label>Nivå</label>
-      <div class="filter-options" id="filter-level"></div>
-    </div>
-    <div class="filter-group">
-      <label>System</label>
-      <div class="filter-options" id="filter-system"></div>
-    </div>
-    <div class="filter-count" id="filter-count"></div>
+  <div class="header-meta">
+    <span id="filter-count">—</span> labbar
   </div>
+</header>
 
-  <div class="grid" id="grid">
-    <div class="loading">
-      <div class="loading-spinner"></div>
-      Laddar labbar...
-    </div>
+<div class="filter-bar">
+  <div class="filter-row">
+    <span class="filter-label">Roll</span>
+    <div id="filter-role"></div>
+  </div>
+  <div class="filter-row">
+    <span class="filter-label">Nivå</span>
+    <div id="filter-level"></div>
+  </div>
+  <div class="filter-row">
+    <span class="filter-label">System</span>
+    <div id="filter-system"></div>
   </div>
 </div>
+
+<main>
+  <div id="grid"></div>
+</main>
 
 <script>
 const FILTERS = {
   role: [
-    { id:"all", label:"Alla" }, { id:"dev", label:"Utvecklare" }, { id:"ux", label:"UX/UI" },
-    { id:"sales", label:"Sälj & Affärsutv." }, { id:"growth", label:"Growth & Marknad" }, { id:"ops", label:"Operations & PM" },
+    { id: "all",    label: "Alla" },
+    { id: "dev",    label: "Utvecklare" },
+    { id: "ux",     label: "UX/UI" },
+    { id: "sales",  label: "Sälj" },
+    { id: "growth", label: "Growth & Marknad" },
+    { id: "ops",    label: "Operations & PM" },
   ],
   level: [
-    { id:"all", label:"Alla nivåer" }, { id:"beginner", label:"Nybörjare" },
-    { id:"intermediate", label:"Mellannivå" }, { id:"advanced", label:"Avancerad" },
+    { id: "all",          label: "Alla nivåer" },
+    { id: "beginner",     label: "Nybörjare" },
+    { id: "intermediate", label: "Mellannivå" },
+    { id: "advanced",     label: "Avancerad" },
   ],
   system: [
-    { id:"all", label:"Alla system" }, { id:"claude", label:"Claude" }, { id:"copilot", label:"Copilot" },
-    { id:"atlassian", label:"Atlassian" }, { id:"agileday", label:"Agileday" },
-    { id:"figma", label:"Figma" }, { id:"general", label:"Generella AI-verktyg" },
+    { id: "all",       label: "Alla system" },
+    { id: "claude",    label: "Claude" },
+    { id: "copilot",   label: "Copilot" },
+    { id: "atlassian", label: "Atlassian" },
+    { id: "hubspot",   label: "HubSpot" },
+    { id: "slack",     label: "Slack" },
+    { id: "figma",     label: "Figma" },
+    { id: "agileday",  label: "Agileday" },
+    { id: "general",   label: "Generellt" },
   ],
 };
 
-const LABELS = {
-  level: { beginner:"Nybörjare", intermediate:"Mellannivå", advanced:"Avancerad" },
-  system: { claude:"Claude", copilot:"Copilot", atlassian:"Atlassian", agileday:"Agileday", figma:"Figma", general:"Generella AI-verktyg" },
-  role: { dev:"Utvecklare", ux:"UX/UI", sales:"Sälj", growth:"Growth", ops:"Operations" },
-};
+const LEVEL_LABELS  = { beginner: "Nybörjare", intermediate: "Mellannivå", advanced: "Avancerad" };
+const ROLE_LABELS   = { dev: "Utvecklare", ux: "UX/UI", sales: "Sälj", growth: "Growth", ops: "Operations", all: "Alla" };
+const SYSTEM_LABELS = { claude: "Claude", copilot: "Copilot", atlassian: "Atlassian", figma: "Figma", hubspot: "HubSpot", slack: "Slack", agileday: "Agileday", general: "Generellt" };
+const RES_ICONS     = { video: "▶", article: "📄", guide: "📘" };
 
-const RESOURCE_ICONS = { video: "▶", article: "📄", guide: "📘" };
-
-const state = { role:"all", level:"all", system:"all", expanded:null };
+const state = { role: "all", level: "all", system: "all", expanded: null };
 let labs = [];
 
 async function loadLabs() {
@@ -241,7 +373,7 @@ async function loadLabs() {
 
 function init() {
   Object.keys(FILTERS).forEach(key => {
-    const container = document.getElementById("filter-" + key);
+    const wrap = document.getElementById("filter-" + key);
     FILTERS[key].forEach(opt => {
       const btn = document.createElement("button");
       btn.className = "filter-btn" + (opt.id === "all" ? " active" : "");
@@ -249,58 +381,59 @@ function init() {
       btn.addEventListener("click", () => {
         state[key] = opt.id;
         state.expanded = null;
-        container.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        wrap.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
         render();
       });
-      container.appendChild(btn);
+      wrap.appendChild(btn);
     });
   });
   loadLabs();
 }
 
+function roleMatch(lab) {
+  if (state.role === "all") return true;
+  return lab.role === state.role || lab.role === "all";
+}
+
 function render() {
   const grid = document.getElementById("grid");
   const filtered = labs.filter(lab =>
-    (state.role === "all" || lab.role === state.role) &&
-    (state.level === "all" || lab.level === state.level) &&
+    roleMatch(lab) &&
+    (state.level  === "all" || lab.level  === state.level) &&
     (state.system === "all" || lab.system === state.system)
   );
 
-  document.getElementById("filter-count").textContent = filtered.length + " av " + labs.length + " labbar";
+  document.getElementById("filter-count").textContent = filtered.length + " av " + labs.length;
 
   if (filtered.length === 0) {
-    grid.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div><p>Inga labbar matchar dina filter. Prova att bredda sökningen.</p></div>';
+    grid.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div><p>Inga labbar matchar filtren. Prova att bredda sökningen.</p></div>';
     return;
   }
 
   grid.innerHTML = filtered.map(lab => {
     const isExp = state.expanded === lab.id;
     const r = lab.resource;
-    const ico = r ? (RESOURCE_ICONS[r.type] || "🔗") : "";
+    const ico = r ? (RES_ICONS[r.type] || "🔗") : "";
+    const sysLabel = SYSTEM_LABELS[lab.system] || lab.system;
 
     return `
       <div class="card${isExp ? " expanded" : ""}" data-id="${lab.id}">
-        <div class="badges">
-          <span class="badge badge-${lab.level}">${LABELS.level[lab.level]}</span>
-          <span class="badge badge-system">${LABELS.system[lab.system]}</span>
-          <span class="badge badge-role">${LABELS.role[lab.role]}</span>
+        <div class="card-badges">
+          <span class="badge badge-${lab.level}">${LEVEL_LABELS[lab.level]}</span>
+          <span class="badge badge-sys-${lab.system}">${sysLabel}</span>
         </div>
         <h3>${lab.title}</h3>
         ${isExp ? `
-          <div class="card-details">
-            <p class="card-desc">${lab.desc}</p>
-            <div class="card-meta">
-              <span><span class="icon">⏱</span> ${lab.time}</span>
-              <span><span class="icon">🎯</span> ${lab.goal}</span>
-            </div>
-            ${r ? `<a class="card-resource" href="${r.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
-              <span class="res-icon">${ico}</span>
-              ${r.label}
-              <span class="res-arrow">→</span>
-            </a>` : ""}
+          <p class="card-desc">${lab.desc}</p>
+          <div class="card-meta">
+            <span><span class="icon">⏱</span>${lab.time}</span>
           </div>
-        ` : '<span class="card-hint">Klicka för detaljer →</span>'}
+          <div class="card-goal">🎯 ${lab.goal}</div>
+          ${r ? `<a class="card-resource" href="${r.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+            <span>${ico}</span>${r.label}<span class="res-arrow">→</span>
+          </a>` : ""}
+        ` : '<span class="card-hint">Klicka för att öppna →</span>'}
       </div>
     `;
   }).join("");
