@@ -1,58 +1,28 @@
 [
   {
     "id": 1,
-    "title": "Skriv user stories med AI",
-    "desc": "Använd Atlassian Rovo i Jira för att generera user stories och acceptance criteria från en kort projektbeskrivning. Jämför med att skriva dem manuellt.",
-    "role": "ops",
+    "title": "Skapa ett Claude-projekt",
+    "desc": "Lär dig hur projekt fungerar i Claude — hur du sätter upp kontext, instruktioner och tonal guide så att Claude alltid svarar i rätt stil för ett specifikt arbetsområde eller kund. Testa hur svaren förändras jämfört med en vanlig konversation.",
+    "role": "all",
     "level": "beginner",
-    "system": "atlassian",
-    "time": "45 min",
-    "goal": "Snabbare och mer konsekvent kravhantering",
+    "system": "claude",
+    "time": "30 min",
+    "goal": "Förstå projektfunktionen och hur den förbättrar svars­kvaliteten",
     "resource": {
-      "label": "Atlassian: AI in Jira",
-      "url": "https://www.atlassian.com/software/jira/ai",
-      "type": "guide"
-    }
-  },
-  {
-    "id": 2,
-    "title": "AI-sammanfattning av möten",
-    "desc": "Testa att spela in och sammanfatta ett internt möte med AI. Jämför sammanfattningen med dina egna anteckningar — vad fångade AI:n som du missade, och vice versa?",
-    "role": "ops",
-    "level": "beginner",
-    "system": "general",
-    "time": "60 min",
-    "goal": "Frigöra tid genom automatiserade mötesanteckningar",
-    "resource": {
-      "label": "Microsoft: Copilot in Teams meetings",
-      "url": "https://support.microsoft.com/en-us/office/get-started-with-copilot-in-microsoft-teams-meetings-0bf9dd3c-96f7-44e2-8bb8-790bedf066b1",
-      "type": "guide"
-    }
-  },
-  {
-    "id": 3,
-    "title": "Refaktorera kod med Copilot",
-    "desc": "Välj en befintlig kodfil i ett projekt och be Copilot föreslå refaktoreringar. Utvärdera förslagen: vad var bra, vad var farligt, vad lärde du dig om hur du promptar?",
-    "role": "dev",
-    "level": "beginner",
-    "system": "copilot",
-    "time": "45 min",
-    "goal": "Förstå var AI-kodassistenter hjälper och var de vilseleder",
-    "resource": {
-      "label": "GitHub: Refactoring with Copilot",
-      "url": "https://github.blog/developer-skills/github/how-to-use-github-copilot-for-refactoring/",
+      "label": "Anthropic: Vad är projekt?",
+      "url": "https://support.anthropic.com/en/articles/9517075-what-are-projects",
       "type": "article"
     }
   },
   {
-    "id": 4,
-    "title": "Bygg en prompt-mall för säljmejl",
-    "desc": "Skapa en återanvändbar prompt-mall i Claude för att generera personaliserade säljmejl baserade på prospektinfo. Testa med 3 olika prospects och iterera på prompten.",
-    "role": "sales",
+    "id": 2,
+    "title": "Naturliga svar — promptteknik",
+    "desc": "Experimentera med att styra Claude mot mer naturliga, icke-AI-iga svar. Ge exempel på text du gillar, beskriv tonen, och jämför resultaten. Testa med en kommunikationsuppgift du gör regelbundet.",
+    "role": "all",
     "level": "beginner",
     "system": "claude",
-    "time": "45 min",
-    "goal": "Snabbare prospektering med personlig touch",
+    "time": "30 min",
+    "goal": "Förstå hur prompting påverkar ton och stil",
     "resource": {
       "label": "Anthropic: Prompt engineering guide",
       "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
@@ -60,242 +30,612 @@
     }
   },
   {
-    "id": 5,
-    "title": "Designvarianter med Figma AI",
-    "desc": "Ta en befintlig designkomponent och använd Figmas AI-funktioner för att generera varianter. Utforska vad som fungerar för layout-exploration vs. detaljdesign.",
-    "role": "ux",
+    "id": 3,
+    "title": "Dela ett projekt med en kollega",
+    "desc": "Testa hur delade Claude-projekt fungerar. Skapa ett projekt, lägg in kontext och instruktioner, och bjud in en kollega. Vad kan kollegan se och göra? Hur kan ni använda det i ett samarbete?",
+    "role": "all",
     "level": "beginner",
-    "system": "figma",
-    "time": "60 min",
-    "goal": "Bredare designutforskning på kortare tid",
+    "system": "claude",
+    "time": "20 min",
+    "goal": "Förstå hur projekt kan delas och användas i team"
+  },
+  {
+    "id": 4,
+    "title": "Koppla Atlassian-connector till Claude",
+    "desc": "Aktivera Atlassian-connectorn i Claude och testa vad du faktiskt kan göra. Kan du ställa frågor mot Confluence? Skapa en Jira-issue? Hämta en sprintstatus? Dokumentera vad som fungerade och var det tog stopp.",
+    "role": "ops",
+    "level": "intermediate",
+    "system": "claude",
+    "time": "45 min",
+    "goal": "Förstå vad Atlassian-connectorn ger och var gränserna går",
     "resource": {
-      "label": "Figma: AI features overview",
-      "url": "https://www.figma.com/ai/",
-      "type": "guide"
+      "label": "Claude: Connectors overview",
+      "url": "https://support.anthropic.com/en/articles/10132688-how-do-i-use-integrations-in-claude-ai",
+      "type": "article"
+    }
+  },
+  {
+    "id": 5,
+    "title": "Koppla HubSpot-connector till Claude",
+    "desc": "Aktivera HubSpot-connectorn i Claude och testa att hämta deals, kontakter och aktiviteter. Be Claude sammanfatta en kontakts historik eller analysera pipeline-status. Jämför med att göra samma sak manuellt i HubSpot.",
+    "role": "sales",
+    "level": "intermediate",
+    "system": "claude",
+    "time": "45 min",
+    "goal": "Kombinera CRM-data med Claude för snabbare säljförberedelse",
+    "resource": {
+      "label": "Claude: Connectors overview",
+      "url": "https://support.anthropic.com/en/articles/10132688-how-do-i-use-integrations-in-claude-ai",
+      "type": "article"
     }
   },
   {
     "id": 6,
-    "title": "SEO-analys med AI",
-    "desc": "Mata in en av våra kunders landningssidor i Claude och be om en SEO-analys med konkreta förbättringsförslag. Jämför med vad du själv hade hittat.",
-    "role": "growth",
-    "level": "beginner",
+    "title": "Skapa och använda en skill",
+    "desc": "Skapa en personlig skill för ett format du återkommer till ofta — t.ex. mötesanteckningar, kundsammanfattningar, statusuppdateringar eller projektbeskrivningar. Testa den mot ett riktigt fall och utvärdera resultatet.",
+    "role": "all",
+    "level": "intermediate",
     "system": "claude",
     "time": "45 min",
-    "goal": "Snabbare SEO-audits med AI som bollplank",
-    "resource": {
-      "label": "Video: Using AI for SEO audits",
-      "url": "https://www.youtube.com/watch?v=sQn3vOjxJRg",
-      "type": "video"
-    }
+    "goal": "Spara tid på återkommande kommunikationsuppgifter"
   },
   {
     "id": 7,
-    "title": "Automatisera tidsrapportering",
-    "desc": "Utforska Agiledays AI-funktioner för att effektivisera tidsrapportering och resursplanering. Dokumentera vilka funktioner som finns och hur de kan spara tid.",
-    "role": "ops",
+    "title": "Skapa ett kraftfullt artifact",
+    "desc": "Be Claude skapa något mer komplext än ett svar — en interaktiv checklista, en jämförelsetabell med filter, en enkel miniapp eller ett dynamiskt dokument. Utforska hur artifacts kan användas i ditt arbete.",
+    "role": "all",
     "level": "intermediate",
-    "system": "agileday",
+    "system": "claude",
     "time": "60 min",
-    "goal": "Minska admin-tid i projektledning",
+    "goal": "Förstå artifacts och hur de kan skapa direkt värde",
     "resource": {
-      "label": "Agileday: Getting started",
-      "url": "https://www.agileday.io/",
+      "label": "Anthropic: Artifacts guide",
+      "url": "https://support.anthropic.com/en/articles/9945592-what-are-artifacts-and-how-do-i-use-them",
       "type": "guide"
     }
   },
   {
     "id": 8,
-    "title": "Prompt engineering för kodgenerering",
-    "desc": "Testa systematiskt olika prompt-tekniker (few-shot, chain-of-thought, constraints) i Claude för att generera en komplett feature. Dokumentera vilka tekniker som ger bäst resultat.",
-    "role": "dev",
-    "level": "intermediate",
+    "title": "Vibecoding — bygg något utan att koda",
+    "desc": "Beskriv för Claude vad du vill bygga — en enkel app, ett formulär, ett quiz, ett verktyg — och iterera tills det fungerar. Fokus på processen: hur du formulerar, styr och utvärderar. Du behöver ingen kodkunskap.",
+    "role": "ops",
+    "level": "advanced",
     "system": "claude",
     "time": "60 min",
-    "goal": "Bli bättre på att instruera AI för koduppgifter",
+    "goal": "Bygga ett fungerande verktyg utan att vara utvecklare",
     "resource": {
-      "label": "Anthropic: Prompt engineering techniques",
-      "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/chain-of-thought",
-      "type": "guide"
+      "label": "Anthropic: Claude.ai introduktion",
+      "url": "https://www.anthropic.com/claude",
+      "type": "article"
     }
   },
   {
     "id": 9,
-    "title": "Analysera RFP:er med AI",
-    "desc": "Ladda upp en RFP eller offertförfrågan i Claude och be om en strukturerad analys: nyckelfrågor, risker, win-themes, och förslag på approach. Jämför med din egen analys.",
-    "role": "sales",
-    "level": "intermediate",
+    "title": "Skapa content i Confluence via Claude",
+    "desc": "Använd Claude med Atlassian-connectorn för att skapa eller uppdatera en Confluence-sida utan att öppna Confluence. Ta anteckningar eller en brief och be Claude strukturera och skriva en färdig sida.",
+    "role": "ops",
+    "level": "advanced",
     "system": "claude",
-    "time": "60 min",
-    "goal": "Snabbare och djupare analys av affärsmöjligheter",
+    "time": "45 min",
+    "goal": "Snabba upp dokumentationsarbetet utan att byta flik",
     "resource": {
-      "label": "Video: AI for proposal analysis",
-      "url": "https://www.youtube.com/watch?v=oC3fhAPnJqE",
-      "type": "video"
+      "label": "Atlassian: Atlassian Intelligence overview",
+      "url": "https://support.atlassian.com/atlassian-intelligence/",
+      "type": "guide"
     }
   },
   {
     "id": 10,
-    "title": "Content-workflow med AI",
-    "desc": "Bygg ett komplett content-workflow: research → outline → draft → edit med AI som stöd i varje steg. Testa med en riktig blogpost eller social media-kampanj.",
-    "role": "growth",
-    "level": "intermediate",
+    "title": "Claude Cowork — automatisera en filuppgift",
+    "desc": "Utforska Claude Cowork och vad det kan göra med filer och mappar på din dator. Välj en repetitiv filuppgift du gör regelbundet och testa om Cowork kan automatisera den.",
+    "role": "ops",
+    "level": "advanced",
     "system": "claude",
     "time": "60 min",
-    "goal": "End-to-end content-produktion med AI",
+    "goal": "Identifiera automatiseringsmöjligheter i det dagliga arbetet",
     "resource": {
-      "label": "Article: AI content workflows",
-      "url": "https://www.animalz.co/blog/ai-content-workflow/",
+      "label": "Anthropic: Claude Cowork",
+      "url": "https://www.anthropic.com/claude",
       "type": "article"
     }
   },
   {
     "id": 11,
-    "title": "AI-driven användarresearch",
-    "desc": "Använd Claude för att analysera befintlig användardata (intervjuer, enkätsvar, supportärenden). Skapa personas och journey maps baserat på AI-analysen.",
-    "role": "ux",
-    "level": "intermediate",
-    "system": "claude",
-    "time": "60 min",
-    "goal": "Snabbare insikter från kvalitativ data",
-    "resource": {
-      "label": "Article: AI for UX research",
-      "url": "https://www.nngroup.com/articles/ai-ux-research/",
-      "type": "article"
-    }
-  },
-  {
-    "id": 12,
-    "title": "Confluence-sidor med AI",
-    "desc": "Testa Atlassian Intelligence i Confluence för att generera dokumentation, mötesprotokoll och projektbeskrivningar. Utvärdera kvaliteten och hitta ditt optimala workflow.",
+    "title": "Utforska Atlassian Intelligence i Jira",
+    "desc": "Hitta och testa AI-funktionerna inbyggda i Jira: automatisk sammanfattning av issues, AI-genererade kommentarer, förbättringsförslag på beskrivningar. Ta ett riktigt ärende med otydlig beskrivning och se vad AI gör med det.",
     "role": "ops",
-    "level": "intermediate",
+    "level": "beginner",
     "system": "atlassian",
-    "time": "45 min",
-    "goal": "Bättre dokumentation med mindre effort",
+    "time": "30 min",
+    "goal": "Förstå vilka AI-funktioner som redan finns i Jira",
     "resource": {
-      "label": "Atlassian: AI in Confluence",
-      "url": "https://www.atlassian.com/software/confluence/ai",
+      "label": "Atlassian: AI in Jira",
+      "url": "https://support.atlassian.com/jira-software-cloud/docs/use-atlassian-intelligence-in-jira/",
       "type": "guide"
     }
   },
   {
-    "id": 13,
-    "title": "Kodrecensioner med AI",
-    "desc": "Använd Copilot och Claude parallellt för att granska en pull request. Jämför deras feedback med manuell review — vad hittar AI som människor missar, och tvärtom?",
-    "role": "dev",
-    "level": "intermediate",
-    "system": "copilot",
-    "time": "60 min",
-    "goal": "Mer grundliga kodrecensioner",
+    "id": 12,
+    "title": "Prata med Rovo om Toxic Game Book",
+    "desc": "Öppna Rovo i Confluence och ställ frågor som en ny medarbetare skulle ställa: 'Hur fungerar vår onboarding?', 'Vad är ett spelsystem?', 'Vem ansvarar för X?' Utvärdera svaren — vad är bra, vad missar Rovo?",
+    "role": "all",
+    "level": "beginner",
+    "system": "atlassian",
+    "time": "30 min",
+    "goal": "Förstå vad Rovo kan hitta i vår dokumentation",
     "resource": {
-      "label": "GitHub: Copilot code review",
-      "url": "https://github.blog/changelog/2024-10-29-copilot-code-review-in-github-com-public-preview/",
+      "label": "Atlassian: Rovo overview",
+      "url": "https://www.atlassian.com/software/rovo",
       "type": "article"
     }
   },
   {
+    "id": 13,
+    "title": "Sprint-summering med Atlassian Intelligence",
+    "desc": "Ta en avslutad sprint och generera en AI-summering med Atlassian Intelligence. Hur bra fångar den det som faktiskt hände? Jämför med vad du hade skrivit själv. Vad saknas, vad är bra?",
+    "role": "ops",
+    "level": "beginner",
+    "system": "atlassian",
+    "time": "30 min",
+    "goal": "Snabba upp sprint-retrospektiver och statusrapporter"
+  },
+  {
     "id": 14,
-    "title": "A/B-test-hypoteser med AI",
-    "desc": "Ge Claude data om en sida eller kampanj och be om A/B-test-hypoteser med förväntad effekt och prioritering. Testa att iterera och förfina med uppföljningsfrågor.",
-    "role": "growth",
+    "title": "Skapa en Rovo-agent",
+    "desc": "Testa att skapa en enkel Rovo-agent med ett specifikt syfte — t.ex. en agent som svarar på frågor om en viss del av Game Book, eller hjälper till med onboarding. Konfigurera instruktioner och testa den mot verkliga frågor.",
+    "role": "ops",
     "level": "intermediate",
-    "system": "claude",
-    "time": "45 min",
-    "goal": "Mer datadrivna experiment snabbare",
+    "system": "atlassian",
+    "time": "60 min",
+    "goal": "Bygga ett AI-verktyg anpassat för Toxics kontext",
     "resource": {
-      "label": "Article: AI-powered experimentation",
-      "url": "https://cxl.com/blog/ai-ab-testing/",
-      "type": "article"
+      "label": "Atlassian: Rovo agents",
+      "url": "https://support.atlassian.com/rovo/docs/what-is-rovo/",
+      "type": "guide"
     }
   },
   {
     "id": 15,
-    "title": "Bygg ett AI-drivet internt verktyg",
-    "desc": "Använd Claude Code eller Artifacts för att bygga ett enkelt internt verktyg — t.ex. en offertgenerator, en projektnamn-brainstormer, eller en onboarding-guide.",
+    "title": "Koppla Rovo mot Slack och HubSpot",
+    "desc": "Testa att ställa frågor via Rovo som kräver information från flera system. Kan Rovo plocka ihop data från Confluence och Slack? Från Confluence och HubSpot? Vad fungerar och vad bryts?",
+    "role": "ops",
+    "level": "intermediate",
+    "system": "atlassian",
+    "time": "45 min",
+    "goal": "Utforska cross-system frågor med Rovo",
+    "resource": {
+      "label": "Atlassian: Rovo connectors",
+      "url": "https://www.atlassian.com/software/rovo",
+      "type": "article"
+    }
+  },
+  {
+    "id": 16,
+    "title": "Automation med AI-trigger i Jira",
+    "desc": "Sätt upp en Jira-automation som använder AI — t.ex. automatisk label­sättning av issues, AI-genererad kommentar när ett ärende skapas, eller prioritetsförslag baserat på rubrik och beskrivning.",
+    "role": "ops",
+    "level": "intermediate",
+    "system": "atlassian",
+    "time": "60 min",
+    "goal": "Minska manuellt arbete med AI-drivna automatiseringar",
+    "resource": {
+      "label": "Atlassian: Jira automation",
+      "url": "https://support.atlassian.com/cloud-automation/docs/jira-automation-actions/",
+      "type": "guide"
+    }
+  },
+  {
+    "id": 17,
+    "title": "Tilldela ett ärende till en Rovo-agent",
+    "desc": "Testa hur långt en Rovo-agent kan ta ett ärende självständigt. Ge den en kravbeskrivning och låt den jobba. Vad gör den bra? Var behöver du ta över?",
+    "role": "ops",
+    "level": "advanced",
+    "system": "atlassian",
+    "time": "60 min",
+    "goal": "Förstå agentisk AI i praktiken i Jira"
+  },
+  {
+    "id": 18,
+    "title": "Validera estimat med Rovo",
+    "desc": "Beskriv ett estimat eller en kravspec i text. Be Rovo validera det mot er process eller era principer för estimering i Confluence. Hur bra är svaret — och vad saknas?",
+    "role": "ops",
+    "level": "advanced",
+    "system": "atlassian",
+    "time": "45 min",
+    "goal": "Använda Rovo för kvalitetskontroll av estimat"
+  },
+  {
+    "id": 19,
+    "title": "HubSpot Breeze Copilot — kontakthistorik",
+    "desc": "Öppna HubSpot Breeze Copilot och be den sammanfatta historiken för en kontakt ni ska träffa — öppna deals, senaste aktivitet, kommunikation. Hur lång tid tar det jämfört med att läsa manuellt?",
+    "role": "sales",
+    "level": "beginner",
+    "system": "hubspot",
+    "time": "20 min",
+    "goal": "Snabbare kundförberedelse inför möten",
+    "resource": {
+      "label": "HubSpot: Breeze Copilot",
+      "url": "https://knowledge.hubspot.com/ai-tools/breeze-copilot",
+      "type": "guide"
+    }
+  },
+  {
+    "id": 20,
+    "title": "AI-genererat uppföljningsmejl",
+    "desc": "Ta ett riktigt prospekt, beskriv situationen och be HubSpots AI-mejlassistent (eller Claude med HubSpot-context) skriva ett uppföljningsmejl. Ge instruktioner om ton och syfte. Jämför med vad du hade skrivit själv.",
+    "role": "sales",
+    "level": "beginner",
+    "system": "hubspot",
+    "time": "30 min",
+    "goal": "Snabba upp mailskrivning med bibehållen personlighet",
+    "resource": {
+      "label": "HubSpot: AI email writer",
+      "url": "https://knowledge.hubspot.com/email/use-ai-to-write-email-content",
+      "type": "guide"
+    }
+  },
+  {
+    "id": 21,
+    "title": "Sammanfatta kontakt med AI",
+    "desc": "Välj en kontakt med rik historik i HubSpot. Låt AI sammanfatta allt som finns dokumenterat. Stämmer sammanfattningen? Vad fångades bra, vad saknas?",
+    "role": "sales",
+    "level": "beginner",
+    "system": "hubspot",
+    "time": "20 min",
+    "goal": "Förstå hur bra AI-summering av CRM-data fungerar"
+  },
+  {
+    "id": 22,
+    "title": "Breeze Content Agent — generera marknadscontent",
+    "desc": "Testa HubSpots Breeze Content Agent för att generera ett blogginlägg, en LinkedIn-post eller en annonstext. Ge den en brief med målgrupp och ton. Jämför resultatet med er content-guide.",
+    "role": "growth",
+    "level": "intermediate",
+    "system": "hubspot",
+    "time": "45 min",
+    "goal": "Förstå hur HubSpots inbyggda content-AI kan snabba upp produktion",
+    "resource": {
+      "label": "HubSpot: Breeze Content Agent",
+      "url": "https://knowledge.hubspot.com/ai-tools/breeze-content-agent",
+      "type": "guide"
+    }
+  },
+  {
+    "id": 23,
+    "title": "HubSpot + Claude — analysera pipeline",
+    "desc": "Aktivera HubSpot-connectorn i Claude och be den hämta alla öppna deals i en viss fas. Be Claude sedan analysera vad som kan göras för att flytta dem framåt. Kombinera CRM-data med AI-analys.",
+    "role": "sales",
+    "level": "intermediate",
+    "system": "hubspot",
+    "time": "45 min",
+    "goal": "Kombinera CRM-data med Claude för säljanalys"
+  },
+  {
+    "id": 24,
+    "title": "AI-drivna workflows i HubSpot",
+    "desc": "Testa att sätta upp ett workflow i HubSpot som använder AI — t.ex. automatisk kategorisering av kontakter, poängsättning baserat på form-svar, eller routing av leads baserat på innehåll.",
+    "role": "sales",
+    "level": "advanced",
+    "system": "hubspot",
+    "time": "60 min",
+    "goal": "Automatisera lead-hantering med AI i HubSpot",
+    "resource": {
+      "label": "HubSpot: Workflows with AI",
+      "url": "https://knowledge.hubspot.com/workflows/create-workflows",
+      "type": "guide"
+    }
+  },
+  {
+    "id": 25,
+    "title": "HubSpot + Confluence — kundprofil via AI",
+    "desc": "Använd Claude (med båda connectors) för att ta information från HubSpot om en kund och skapa strukturerad dokumentation i Confluence — en kundprofil, en projektstart eller en säljhandoff.",
+    "role": "sales",
+    "level": "advanced",
+    "system": "hubspot",
+    "time": "60 min",
+    "goal": "Skapa sömlösa handoffs mellan sälj och leverans"
+  },
+  {
+    "id": 26,
+    "title": "Slack AI — kanal- och trådsammanfattningar",
+    "desc": "Öppna en kanal med mycket aktivitet och be Slack AI sammanfatta vad som hänt den senaste veckan. Testa även att sammanfatta en lång tråd. Hur bra är sammanfattningarna? Vad missar de?",
+    "role": "all",
+    "level": "beginner",
+    "system": "slack",
+    "time": "20 min",
+    "goal": "Minska catch-up-tid efter ledighet eller frånvaro",
+    "resource": {
+      "label": "Slack: AI features",
+      "url": "https://slack.com/features/ai",
+      "type": "article"
+    }
+  },
+  {
+    "id": 27,
+    "title": "AI-sökning i Slack",
+    "desc": "Testa naturlig språksökning i Slack: 'Vad beslutades om X i september?', 'Vad sa vi om kund Y förra månaden?' Jämför med vanlig Slack-sökning. Hur mycket snabbare och träffsäkrare är det?",
+    "role": "all",
+    "level": "beginner",
+    "system": "slack",
+    "time": "20 min",
+    "goal": "Hitta historisk information snabbare",
+    "resource": {
+      "label": "Slack: Search with AI",
+      "url": "https://slack.com/features/ai",
+      "type": "article"
+    }
+  },
+  {
+    "id": 28,
+    "title": "Slack Huddle AI-anteckningar",
+    "desc": "Kör ett kort huddle med en kollega och aktivera AI-anteckningar. Se hur väl den fångar diskussionen, genererade action items och beslutssammanfattningen.",
+    "role": "ops",
+    "level": "intermediate",
+    "system": "slack",
+    "time": "30 min",
+    "goal": "Slippa ta anteckningar i korta möten"
+  },
+  {
+    "id": 29,
+    "title": "Slack MCP med Claude",
+    "desc": "Aktivera Slack-connectorn i Claude och testa vad du kan göra: söka i historik, sammanfatta kanaler, ställa frågor som kräver information från Slack. Prova att fråga om ett specifikt projekt.",
+    "role": "all",
+    "level": "intermediate",
+    "system": "slack",
+    "time": "45 min",
+    "goal": "Kombinera Slack-historia med Claudes analytiska förmåga",
+    "resource": {
+      "label": "Claude: Connectors overview",
+      "url": "https://support.anthropic.com/en/articles/10132688-how-do-i-use-integrations-in-claude-ai",
+      "type": "article"
+    }
+  },
+  {
+    "id": 30,
+    "title": "Kombinera Slack + Confluence + HubSpot via Claude",
+    "desc": "Ställ frågor till Claude som kräver information från alla tre system. 'Vad har vi sagt om kund X i Slack, vad är den senaste statusen i HubSpot och finns relevant dokumentation i Confluence?' Testa var det fungerar och var det bryts.",
+    "role": "ops",
+    "level": "advanced",
+    "system": "slack",
+    "time": "60 min",
+    "goal": "Förstå potentialen (och begränsningarna) i multi-system AI-queries"
+  },
+  {
+    "id": 31,
+    "title": "Copilot för kodförklaring",
+    "desc": "Välj ett segment kod i en befintlig kodbas som du inte skrivit själv. Be Copilot Chat förklara vad den gör, varför den är strukturerad så, och vad eventuella risker är. Stämmer förklaringen med verkligheten?",
+    "role": "dev",
+    "level": "beginner",
+    "system": "copilot",
+    "time": "30 min",
+    "goal": "Förstå okänd kod snabbare",
+    "resource": {
+      "label": "GitHub: Copilot documentation",
+      "url": "https://docs.github.com/en/copilot",
+      "type": "guide"
+    }
+  },
+  {
+    "id": 32,
+    "title": "Generera tester med Copilot",
+    "desc": "Välj en funktion eller klass i ett pågående projekt som saknar tester. Be Copilot generera enhetstester. Granska kvaliteten — täcker de edge cases? Är de meningsfulla eller bara formalistiska?",
+    "role": "dev",
+    "level": "beginner",
+    "system": "copilot",
+    "time": "45 min",
+    "goal": "Höja testtäckning snabbare med AI-stöd",
+    "resource": {
+      "label": "GitHub: Generate tests with Copilot",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide",
+      "type": "guide"
+    }
+  },
+  {
+    "id": 33,
+    "title": "Copilot Chat för felsökning",
+    "desc": "Ta ett riktigt felmeddelande eller buggreport från ett pågående projekt. Klistra in i Copilot Chat med relevant kodsegment. Hur långt tar det dig? Vad behöver du lägga till för ett användbart svar?",
+    "role": "dev",
+    "level": "beginner",
+    "system": "copilot",
+    "time": "30 min",
+    "goal": "Korta ner tid till root cause vid buggar"
+  },
+  {
+    "id": 34,
+    "title": "Brownfield-test med Copilot",
+    "desc": "Ta ett icke-trivialt ärende i en befintlig kundkodbas. Låt Copilot föreslå en implementation. Utvärdera kritiskt: förstår den arkitekturen? Tar den hänsyn till befintliga mönster och beroenden? Det här är kärnfrågan om AI i verkliga projekt.",
+    "role": "dev",
+    "level": "intermediate",
+    "system": "copilot",
+    "time": "60 min",
+    "goal": "Förstå verkliga begränsningar med AI i brownfield",
+    "resource": {
+      "label": "GitHub Blog: AI coding in practice",
+      "url": "https://github.blog/developer-skills/github-copilot/",
+      "type": "article"
+    }
+  },
+  {
+    "id": 35,
+    "title": "Jämför Copilot vs Claude för samma uppgift",
+    "desc": "Ta en konkret uppgift — refaktorera en funktion, generera dokumentation, eller föreslå en arkitekturlösning. Gör den i Copilot och i Claude. Jämför resultaten: vad är bra och dåligt i varje verktyg?",
+    "role": "dev",
+    "level": "intermediate",
+    "system": "copilot",
+    "time": "60 min",
+    "goal": "Förstå styrkor och svagheter hos olika AI-verktyg"
+  },
+  {
+    "id": 36,
+    "title": "Code review med AI",
+    "desc": "Ta en nyligen merged PR från ett pågående projekt. Kör den genom Copilot eller Claude och be om en code review. Vad hittar AI:n? Vad missar den? Jämför med vad du eller en kollega hade sagt som reviewer.",
+    "role": "dev",
+    "level": "intermediate",
+    "system": "copilot",
+    "time": "45 min",
+    "goal": "Förstå AI:s roll i code review-flödet"
+  },
+  {
+    "id": 37,
+    "title": "Agentic coding med Claude Code",
+    "desc": "Prova Claude Code för en väldefinierad uppgift i ett riktigt projekt. Ge det ett mål snarare än steg-för-steg-instruktioner. Se hur det navigerar koden, vilka beslut det tar och var det fastnar.",
     "role": "dev",
     "level": "advanced",
-    "system": "claude",
+    "system": "copilot",
     "time": "60 min",
-    "goal": "Förstå potentialen i AI som utvecklingspartner",
+    "goal": "Utforska agentisk AI i ett verkligt kodsammanhang",
     "resource": {
-      "label": "Anthropic: Claude Code overview",
+      "label": "Anthropic: Claude Code",
       "url": "https://docs.anthropic.com/en/docs/claude-code/overview",
       "type": "guide"
     }
   },
   {
-    "id": 16,
-    "title": "Design system-review med AI",
-    "desc": "Mata in ert design system i Claude och be om en konsistensanalys. Hitta inkonsistenser i spacing, färger och typografi som är svåra att upptäcka manuellt.",
-    "role": "ux",
-    "level": "advanced",
-    "system": "claude",
-    "time": "60 min",
-    "goal": "Bättre design system-kvalitet",
-    "resource": {
-      "label": "Video: AI for design systems",
-      "url": "https://www.youtube.com/watch?v=Ks1BrdHxnWs",
-      "type": "video"
-    }
-  },
-  {
-    "id": 17,
-    "title": "AI-stödd pitch-prep",
-    "desc": "Förbered en kundpitch med AI: research om kunden, generera talking points, förutse invändningar och skapa en pitch-struktur. Testa med en riktig kommande pitch.",
-    "role": "sales",
-    "level": "advanced",
-    "system": "claude",
-    "time": "60 min",
-    "goal": "Bättre förberedda och mer träffsäkra pitchar",
-    "resource": {
-      "label": "Video: AI for sales preparation",
-      "url": "https://www.youtube.com/watch?v=OYQT2mLhGxs",
-      "type": "video"
-    }
-  },
-  {
-    "id": 18,
-    "title": "Jira-automation med AI-regler",
-    "desc": "Utforska och konfigurera Jira Automation-regler som använder AI-funktioner — automatiska labels, prioritering, och routing av issues baserat på innehåll.",
-    "role": "ops",
-    "level": "advanced",
-    "system": "atlassian",
-    "time": "60 min",
-    "goal": "Smartare projektflöden med mindre manuellt arbete",
-    "resource": {
-      "label": "Atlassian: Automation with AI",
-      "url": "https://www.atlassian.com/software/jira/guides/automation/overview",
-      "type": "guide"
-    }
-  },
-  {
-    "id": 19,
-    "title": "Testa AI för tillgänglighetsanalys",
-    "desc": "Använd AI för att granska en webbsida mot WCAG-riktlinjer. Jämför AI:ns findings med en manuell audit och utvärdera var AI är pålitlig nog att lita på.",
+    "id": 38,
+    "title": "Arkitekturanalys av befintligt system",
+    "desc": "Beskriv en komponent eller ett flöde för Claude och be det identifiera risker, förbättringsmöjligheter och teknisk skuld. Jämför sedan AI:ns analys med din egen bild av systemet.",
     "role": "dev",
     "level": "advanced",
-    "system": "claude",
+    "system": "copilot",
     "time": "60 min",
-    "goal": "Snabbare a11y-screening i projekten",
+    "goal": "Använda AI för att utmana och komplettera din egen systemförståelse"
+  },
+  {
+    "id": 39,
+    "title": "Figma AI — generera utkast från brief",
+    "desc": "Testa hur Figma AI kan generera ett utkast från en textbeskrivning, hjälpa med auto-layout eller föreslå rename på lager. Prova på ett riktigt designproblem du jobbar med just nu.",
+    "role": "ux",
+    "level": "beginner",
+    "system": "figma",
+    "time": "30 min",
+    "goal": "Förstå vad Figma AI kan bidra med i designprocessen",
     "resource": {
-      "label": "Article: AI accessibility testing",
-      "url": "https://www.deque.com/blog/accessibility-testing-with-ai/",
+      "label": "Figma: AI features",
+      "url": "https://www.figma.com/ai/",
       "type": "article"
     }
   },
   {
-    "id": 20,
-    "title": "Kompetitiv analys med AI",
-    "desc": "Gör en djupanalys av en konkurrents digitala närvaro med AI som forskningsassistent: positionering, content-strategi, SEO-approach och UX-mönster.",
+    "id": 40,
+    "title": "Alt-texter och copy med Figma AI",
+    "desc": "Testa Figma AI för att generera alt-texter på bilder och föreslå copy direkt i designverktyget. Hur träffsäkra är förslagen? Vad behöver du redigera?",
+    "role": "ux",
+    "level": "beginner",
+    "system": "figma",
+    "time": "30 min",
+    "goal": "Snabba upp tillgänglighetsarbete och copywriting i Figma"
+  },
+  {
+    "id": 41,
+    "title": "Tillgänglighetsanalys med Claude",
+    "desc": "Ta en skärmdump av en design från ett pågående kundprojekt. Be Claude analysera den mot WCAG-riktlinjer. Jämför med vad en manuell audit ger. Vad hittar AI:n — och vad missar den?",
+    "role": "ux",
+    "level": "intermediate",
+    "system": "figma",
+    "time": "45 min",
+    "goal": "Snabbare WCAG-screening med AI",
+    "resource": {
+      "label": "W3C: WCAG 2.2 overview",
+      "url": "https://www.w3.org/WAI/standards-guidelines/wcag/",
+      "type": "guide"
+    }
+  },
+  {
+    "id": 42,
+    "title": "Claude-projekt med design system som kontext",
+    "desc": "Skapa ett Claude-projekt med er design-systemdokumentation och tonalitetsguide som kontext. Testa sedan att använda det för designfeedback, component-namn, eller copy — ser svaren annorlunda ut?",
+    "role": "ux",
+    "level": "intermediate",
+    "system": "figma",
+    "time": "45 min",
+    "goal": "Använda Claude som en informerad designassistent"
+  },
+  {
+    "id": 43,
+    "title": "AI-analys av konkurrents UX",
+    "desc": "Välj en konkurrents eller kunds webbplats. Be Claude analysera UX-mönster, navigationsstruktur och content-hierarki baserat på skärmdumpar. Vad kan analysen ge er som ni kan ta med till egna projekt?",
+    "role": "ux",
+    "level": "advanced",
+    "system": "figma",
+    "time": "60 min",
+    "goal": "Snabba upp konkurrentanalyser och UX-benchmarking",
+    "resource": {
+      "label": "Nielsen Norman Group: AI in UX",
+      "url": "https://www.nngroup.com/topic/ai-artificial-intelligence/",
+      "type": "article"
+    }
+  },
+  {
+    "id": 44,
+    "title": "Copilot i Outlook — sammanfatta och svara",
+    "desc": "Ta en komplex e-posttråd och låt Microsoft Copilot sammanfatta den. Testa sedan att be den föreslå ett svar. Hur bra är det? Vad behöver du justera?",
+    "role": "ops",
+    "level": "beginner",
+    "system": "copilot",
+    "time": "20 min",
+    "goal": "Minska tid på e-posthantering",
+    "resource": {
+      "label": "Microsoft: Copilot in Outlook",
+      "url": "https://support.microsoft.com/en-us/topic/use-copilot-in-outlook-31777a4e-9e57-4459-be7e-e1b0f39b4c35",
+      "type": "guide"
+    }
+  },
+  {
+    "id": 45,
+    "title": "Copilot i Teams — mötessammanfattning",
+    "desc": "Aktivera Copilot i ett Teams-möte med transkription påslaget. Testa sammanfattningen efteråt: hur bra fångade den beslut och action items? Vad saknas, vad är bra?",
+    "role": "ops",
+    "level": "beginner",
+    "system": "copilot",
+    "time": "30 min",
+    "goal": "Automatisera anteckningstagning i möten",
+    "resource": {
+      "label": "Microsoft: Copilot in Teams",
+      "url": "https://support.microsoft.com/en-us/office/use-copilot-in-microsoft-teams-meetings-0bf9dd3c-96f7-44e2-8bb8-790bedf066b1",
+      "type": "guide"
+    }
+  },
+  {
+    "id": 46,
+    "title": "Content som inte låter AI-genererat",
+    "desc": "Ge Claude en brief och ett tonalitetsexempel från en kunds befintliga content. Be Claude matcha stilen. Jämför med ett 'vanligt' AI-svar utan tonalitetsstyrning. Hur stor skillnad blir det?",
+    "role": "growth",
+    "level": "beginner",
+    "system": "claude",
+    "time": "30 min",
+    "goal": "Lär dig styra AI mot autentisk, varumärkesanpassad ton",
+    "resource": {
+      "label": "Anthropic: Prompt engineering guide",
+      "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "type": "guide"
+    }
+  },
+  {
+    "id": 47,
+    "title": "SEO och AI Overviews — vad händer med söktrafik?",
+    "desc": "Välj en sökning relevant för en kunds bransch och analysera hur SERP:en ser ut med AI Overviews aktiverat. Diskutera vad det innebär för er content-strategi och hur man optimerar för att synas i AI-svar.",
+    "role": "growth",
+    "level": "intermediate",
+    "system": "general",
+    "time": "45 min",
+    "goal": "Förstå hur generativ AI förändrar söktrafik och content-strategi",
+    "resource": {
+      "label": "Search Engine Land: AI Overviews guide",
+      "url": "https://searchengineland.com/google-ai-overviews-seo-guide",
+      "type": "article"
+    }
+  },
+  {
+    "id": 48,
+    "title": "Konkurrentanalys med Claude som research-assistent",
+    "desc": "Välj en konkurrent eller kunds konkurrent. Be Claude ta fram en strukturerad analys av deras digitala närvaro: positionering, content-strategi, SEO-approach och UX-mönster. Hur snabbt kan du göra det jämfört med manuell research?",
     "role": "growth",
     "level": "advanced",
     "system": "claude",
     "time": "60 min",
-    "goal": "Djupare konkurrentinsikter på en bråkdel av tiden",
+    "goal": "Snabbare och mer strukturerade konkurrentanalyser",
     "resource": {
-      "label": "Article: AI competitive analysis",
-      "url": "https://www.semrush.com/blog/ai-competitive-analysis/",
+      "label": "Anthropic: Claude.ai",
+      "url": "https://claude.ai",
       "type": "article"
     }
   }
